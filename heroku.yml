@@ -1,0 +1,4 @@
+build:
+  docker:
+    web: pgadmin/Dockerfile
+    worker: db/Dockerfile
