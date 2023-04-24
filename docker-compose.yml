@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: schedula_user_db
+    ports:
+      - '5103:5432'
+    volumes:
+      - ./.ignore/postgres/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=schedula_user
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'schedula@gmail.com'
+      PGADMIN_DEFAULT_PASSWORD: 'schedula123!'
+    ports:
+      - '16543:80'
+    depends_on:
+      - postgres
